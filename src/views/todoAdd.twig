@@ -1,0 +1,27 @@
+<html lang="en">
+<body>
+
+<form action='../user/user' method='POST'>
+    <input type='hidden' value='DELETE' name='fake_method'></input>
+    <input type='hidden' value='{{ sessions.id }}' name='id'></input>
+    <input type='submit' value='Logout'></input>
+</form>
+<a href='todoIndex'>Back</a>
+<h1>Publisher add</h1>
+
+    <form action='todoAdd' method='POST'>
+        <label>Name</label>
+        <input type="text" name="naam"></input></br>
+
+        <label>Klaar</label>
+        <input type="text" name="klaar"></input></br>
+
+        <label>new todo</label>
+        <input type='text' name='new_todo_name'></input></br>
+        
+        <label>volgorde</label>
+        <input type="number" name="volgorde"></input></br>
+
+        <input type='submit' value='add'></input>
+    </form>
+</html>

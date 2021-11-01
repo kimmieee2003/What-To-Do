@@ -1,0 +1,26 @@
+<html lang="en">
+<body>
+
+<form action='../user/user' method='POST'>
+    <input type='hidden' value='DELETE' name='fake_method'></input>
+    <input type='hidden' value='{{ sessions.id }}' name='id'></input>
+    <input type='submit' value='Logout'></input>
+</form>
+<a href='todoIndex'>Back</a>
+
+<h1>Todo edit</h1>
+
+    <form action='todoEdit' method='POST'>
+        <label>Name</label>
+
+        <input type='hidden' name='fake_method' value='PUT'></input>
+
+        <input type='hidden' name='edit_todo_id' value='{{ todo.id }}'></input>
+
+        <input type="text" name="edit_todo_klaar" placeholder='{{ todo.klaar }}' value='{{ todo.klaar }}'></input>
+
+        <input type='text' name='todo' placeholder='{{ todo.todo }}' value='{{ todo.todo }}'></input>
+
+        <input type='submit' value='edit'></input>
+    </form>
+</html>

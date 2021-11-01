@@ -1,0 +1,100 @@
+<html lang="en">
+<body>
+
+<form action='../user/user' method='POST'>
+    <input type='hidden' value='DELETE' name='fake_method'></input>
+    <input type='hidden' value='{{ sessions.id }}' name='id'></input>
+    <input type='submit' value='Logout'></input>
+</form>
+
+<form action='todo' method='POST'>
+    <input type='submit' value='Add a todo'></input>
+</form>
+{% for user in users %}
+<h1>Hallo {{ user.username }}</h1>
+{% endfor %}
+<table style="border: 1px solid black">
+    <th>
+        <tr>
+            <td style="border: 1px solid black">todo list</td>
+        </tr>
+    </th>
+
+    {% for todo in convertedTodo %}
+        <tr>
+
+            <td style="border: 1px solid black">{{ todo.user_naam }} - {{ todo.naam }} - {{ todo.klaar }} - {{ todo.todo }}
+
+            <form action='todo' method='POST'>
+                <input type='hidden' value='PUT' name='fake_method'></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='submit' value='Edit'></input>
+            </form>
+
+            <form action='todo' method='POST'>
+                <input type='hidden' value='DELETE' name='fake_method'></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='submit' value='Delete'></input>
+            </form>
+
+            <form action='todo' method='POST'>
+                <input type='hidden' value='klaar' name='fake_method'></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='submit' value='Klaar'></input>
+            </form>
+
+            <form action="todo" method="POST">
+                <input type="hidden" value="min" name="fake_method"></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='hidden' value='{{ todo.volgorde }}' name='volgorde'></input>
+                <input type='hidden' value='{{ todo.naam }}' name='naam'></input>
+                <input type='hidden' value='{{ todo.user_id }}' name='userid'></input>
+                <input type='hidden' value='{{ todo.todo }}' name='todo'></input>
+                <input type='submit' value='Omhoog'></input>
+            </form>
+
+            <form action="todo" method="POST">
+                <input type="hidden" value="plus" name="fake_method"></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='hidden' value='{{ todo.volgorde }}' name='volgorde'></input>
+                <input type='hidden' value='{{ todo.naam }}' name='naam'></input>
+                <input type='hidden' value='{{ todo.user_id }}' name='userid'></input>
+                <input type='hidden' value='{{ todo.todo }}' name='todo'></input>
+                <input type='submit' value='Omlaag'></input>
+            </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+<table style="border: 1px solid black">
+    <th>
+        <tr>
+            <td style="border: 1px solid black">finished list</td>
+        </tr>
+    </th>
+
+    {% for todo in convertedDone %}
+        <tr>
+
+            <td style="border: 1px solid black">{{ todo.user_naam }} - {{ todo.naam }} - {{ todo.klaar }} - {{ todo.todo }}
+
+            <form action='todo' method='POST'>
+                <input type='hidden' value='nietklaar' name='fake_method'></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='submit' value='Niet klaar'></input>
+            </form>
+
+            <form action='todo' method='POST'>
+                <input type='hidden' value='DELETE' name='fake_method'></input>
+                <input type='hidden' value='{{ todo.id }}' name='id'></input>
+                <input type='submit' value='Delete'></input>
+            </form>
+            
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+    
+</body>
+</html>
